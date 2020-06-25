@@ -8394,7 +8394,7 @@ var resendCode = /*#__PURE__*/function () {
             _context.next = 3;
             return (0, _axios.default)({
               method: 'POST',
-              url: 'http://localhost:3000/api/v1/users/resendCode',
+              url: '/api/v1/users/resendCode',
               data: data
             });
 
@@ -8476,7 +8476,7 @@ var login = /*#__PURE__*/function () {
             _context.next = 3;
             return (0, _axios.default)({
               method: 'POST',
-              url: 'http://localhost:3000/api/v1/users/login',
+              url: '/api/v1/users/login',
               data: data
             });
 
@@ -8528,7 +8528,7 @@ var logout = /*#__PURE__*/function () {
             _context2.next = 3;
             return (0, _axios.default)({
               method: 'GET',
-              url: 'http://localhost:3000/api/v1/users/logout'
+              url: '/api/v1/users/logout'
             });
 
           case 3:
@@ -8645,7 +8645,7 @@ var signup = /*#__PURE__*/function () {
             _context.next = 3;
             return (0, _axios.default)({
               method: 'POST',
-              url: 'http://localhost:3000/api/v1/users/signup',
+              url: '/api/v1/users/signup',
               data: data
             });
 
@@ -8715,7 +8715,7 @@ var signupPhone = /*#__PURE__*/function () {
             _context.next = 3;
             return (0, _axios.default)({
               method: 'POST',
-              url: 'http://localhost:3000/api/v1/users/signupPhone',
+              url: '/api/v1/users/signupPhone',
               data: data
             });
 
@@ -8734,17 +8734,16 @@ var signupPhone = /*#__PURE__*/function () {
               }, 3000);
             }
 
-            _context.next = 12;
+            _context.next = 11;
             break;
 
           case 7:
             _context.prev = 7;
             _context.t0 = _context["catch"](0);
-            console.log(_context.t0);
             (0, _alerts.showAlert)('error', _context.t0.response.data.message);
             return _context.abrupt("return", _context.t0.response.data);
 
-          case 12:
+          case 11:
           case "end":
             return _context.stop();
         }
@@ -8787,7 +8786,7 @@ var verifyTwilio = /*#__PURE__*/function () {
             _context.next = 3;
             return (0, _axios.default)({
               method: 'POST',
-              url: 'http://localhost:3000/api/v1/users/verifyTwilio',
+              url: '/api/v1/users/verifyTwilio',
               data: {
                 phone: phone,
                 code: code
@@ -8855,7 +8854,7 @@ var verify = /*#__PURE__*/function () {
             _context.next = 3;
             return (0, _axios.default)({
               method: 'POST',
-              url: type === 'normal' ? 'http://localhost:3000/api/v1/users/verify' : 'http://localhost:3000/api/v1/users/verifyPasswordResetToken',
+              url: type === 'normal' ? '/api/v1/users/verify' : '/api/v1/users/verifyPasswordResetToken',
               data: {
                 code: code
               }
@@ -8929,7 +8928,7 @@ var forgotPassword = /*#__PURE__*/function () {
             _context.next = 3;
             return (0, _axios.default)({
               method: 'POST',
-              url: 'http://localhost:3000/api/v1/users/forgotPassword',
+              url: '/api/v1/users/forgotPassword',
               data: data
             });
 
@@ -9059,7 +9058,7 @@ var updateUser = /*#__PURE__*/function () {
             _context.next = 3;
             return (0, _axios.default)({
               method: 'PATCH',
-              url: type === 'data' ? 'http://localhost:3000/api/v1/users/updateMe' : 'http://localhost:3000/api/v1/users/updateMyPassword',
+              url: type === 'data' ? '/api/v1/users/updateMe' : '/api/v1/users/updateMyPassword',
               data: data
             });
 
@@ -9121,7 +9120,7 @@ var bookTour = /*#__PURE__*/function () {
           case 0:
             _context.prev = 0;
             _context.next = 3;
-            return (0, _axios.default)("http://localhost:3000/api/v1/bookings/checkout-session/".concat(tourId));
+            return (0, _axios.default)("/api/v1/bookings/checkout-session/".concat(tourId));
 
           case 3:
             session = _context.sent;
@@ -9180,7 +9179,7 @@ var resetPassword = /*#__PURE__*/function () {
             _context.next = 3;
             return (0, _axios.default)({
               method: 'PATCH',
-              url: "http://localhost:3000/api/v1/users/resetPassword/".concat(token),
+              url: "/api/v1/users/resetPassword/".concat(token),
               data: {
                 password: password,
                 passwordConfirm: passwordConfirm
@@ -9536,7 +9535,7 @@ if (resend) {
             });
             resetPassword = query.resetPassword;
 
-            if (!(phoneObj && (resetPassword || document.referrer === 'http://localhost:3000/forgotPassword' || localStorage.getItem('resetPassword')))) {
+            if (!(phoneObj && (resetPassword || document.referrer === '/forgotPassword' || localStorage.getItem('resetPassword')))) {
               _context.next = 9;
               break;
             }
@@ -9551,7 +9550,7 @@ if (resend) {
             return _context.abrupt("return", localStorage.removeItem('resetPassword'));
 
           case 9:
-            if (!(emailObj && (resetPassword || document.referrer === 'http://localhost:3000/forgotPassword' || localStorage.getItem('resetPassword')))) {
+            if (!(emailObj && (resetPassword || document.referrer === '/forgotPassword' || localStorage.getItem('resetPassword')))) {
               _context.next = 14;
               break;
             }
@@ -10001,7 +10000,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "33476" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "45670" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

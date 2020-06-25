@@ -7,7 +7,7 @@ export const signupPhone = async (data, phone) => {
   try {
     const res = await axios({
       method: 'POST',
-      url: 'http://localhost:3000/api/v1/users/signupPhone',
+      url: '/api/v1/users/signupPhone',
       data
     });
 
@@ -25,7 +25,6 @@ export const signupPhone = async (data, phone) => {
       }, 3000);
     }
   } catch (err) {
-    console.log(err);
     showAlert('error', err.response.data.message);
     return err.response.data;
   }

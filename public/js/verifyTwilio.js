@@ -7,7 +7,7 @@ export const verifyTwilio = async (phone, code) => {
   try {
     const res = await axios({
       method: 'POST',
-      url: 'http://localhost:3000/api/v1/users/verifyTwilio',
+      url: '/api/v1/users/verifyTwilio',
       data: {
         phone,
         code

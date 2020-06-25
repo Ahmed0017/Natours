@@ -9,8 +9,8 @@ export const verify = async (code, type) => {
       method: 'POST',
       url:
         type === 'normal'
-          ? 'http://localhost:3000/api/v1/users/verify'
-          : 'http://localhost:3000/api/v1/users/verifyPasswordResetToken',
+          ? '/api/v1/users/verify'
+          : '/api/v1/users/verifyPasswordResetToken',
       data: {
         code
       }

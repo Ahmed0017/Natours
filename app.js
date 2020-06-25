@@ -10,6 +10,7 @@ const hpp = require('hpp');
 const cors = require('cors');
 const swaggerUi = require('swagger-ui-express');
 const cookieParser = require('cookie-parser');
+const compression = require('compression');
 
 require('./services/passport');
 const tourRouter = require('./routes/tourRoutes');
@@ -78,9 +79,12 @@ app.use(
   })
 );
 
+// Compress responses
+app.use(compression());
+
 // Test middleware
 app.use((req, res, next) => {
-  console.log('Hello from the middleware!');
+  // console.log('Hello from the middleware!');
   next();
 });
 

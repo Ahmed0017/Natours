@@ -42,7 +42,7 @@ if (resend) {
     if (
       phoneObj &&
       (resetPassword ||
-        document.referrer === 'http://localhost:3000/forgotPassword' ||
+        document.referrer === '/forgotPassword' ||
         localStorage.getItem('resetPassword'))
     ) {
       const { phone } = phoneObj;
@@ -53,7 +53,7 @@ if (resend) {
     if (
       emailObj &&
       (resetPassword ||
-        document.referrer === 'http://localhost:3000/forgotPassword' ||
+        document.referrer === '/forgotPassword' ||
         localStorage.getItem('resetPassword'))
     ) {
       const { email } = emailObj;

@@ -17,7 +17,6 @@ module.exports = async (file, folderName, width, height, ext = '') => {
       .toFormat(ext || defaultExt)
       .toFile(`public/img/${folderName}/${file.filename}`);
   } catch (err) {
-    console.log(err);
     throw new Error('Error Writing file! Please try again later.');
   }
 };
