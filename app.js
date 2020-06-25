@@ -11,6 +11,7 @@ const cors = require('cors');
 const swaggerUi = require('swagger-ui-express');
 const cookieParser = require('cookie-parser');
 const compression = require('compression');
+const sslRedirect = require('heroku-ssl-redirect');
 
 require('./services/passport');
 const tourRouter = require('./routes/tourRoutes');
@@ -81,6 +82,8 @@ app.use(
 
 // Compress responses
 app.use(compression());
+
+app.use(sslRedirect());
 
 // Test middleware
 app.use((req, res, next) => {
