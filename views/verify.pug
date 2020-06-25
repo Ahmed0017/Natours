@@ -1,0 +1,19 @@
+extends base
+
+block append head
+  script(src='https://cdnjs.cloudflare.com/ajax/libs/qs/6.9.4/qs.min.js')
+
+
+block content
+  .form--signup       
+    h2.heading-secondary.ma-bt-lg Enter the verification code
+    form.form__verify--continue
+      .form__group
+        label.form__label(for='code') Code
+        input#code.form__input(type='text', placeholder='Enter code', required)
+      .form__group
+        button.btn__form--local.btn--green Continue
+  if (resetPassword)      
+    button#resendCode(data-resetPassword=`${resetPassword}`) Didn't receive a code?
+  else  
+    button#resendCode(data-normal=`${normal}`) Didn't receive a code?

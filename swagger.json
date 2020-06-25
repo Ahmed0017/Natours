@@ -1,0 +1,537 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "The Natours API contains endpoints for Tours, Users and Reviews. created by Ahmed Khalil.",
+    "version": "1.0.0",
+    "title": "Natours API",
+    "contact": {
+      "email": "devahmedkhalil.io@gmail.com"
+    }
+  },
+  "host": "localhost:3000",
+  "basePath": "/api/v1",
+  "tags": [
+    {
+      "name": "users",
+      "description": "Operations about users"
+    }
+  ],
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+    "/users/signup": {
+      "post": {
+        "tags": [
+          "users"
+        ],
+        "summary": "Sign Up",
+        "description": "Use this endpoint to signup",
+        "operationId": "signup",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "This is the document that will be created",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          },
+          "400": {
+            "description": "Bad request"
+          }
+        }
+      }
+    },
+    "/users/login": {
+      "post": {
+        "tags": [
+          "users"
+        ],
+        "summary": "Login",
+        "description": "Use this endpoint to login",
+        "operationId": "login",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "You can provide your email and password here",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "email": {
+                  "type": "string"
+                },
+                "password": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "401": {
+            "description": "Incorrect email or password"
+          }
+        }
+      }
+    },
+    "/users/updateMe": {
+      "patch": {
+        "tags": [
+          "users"
+        ],
+        "summary": "Update your data",
+        "description": "Use this endpoint to update your data",
+        "operationId": "updateMe",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "You can update your data here",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
+      }
+    },
+    "/users/updateMyPassword": {
+      "patch": {
+        "tags": [
+          "users"
+        ],
+        "summary": "Update your password",
+        "description": "Use this endpoint to update your password",
+        "operationId": "updateMyPassword",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "You can provide your current, new password AND password confirm here",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "passwordCuurent": {
+                  "type": "string"
+                },
+                "password": {
+                  "type": "string"
+                },
+                "passswordConfirm": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
+      }
+    },
+    "/users/me": {
+      "get": {
+        "tags": [
+          "users"
+        ],
+        "summary": "Get your data",
+        "description": "Use this endpoint to get your data",
+        "operationId": "getMe",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
+      }
+    },
+    "/users/forgetPassword": {
+      "post": {
+        "tags": [
+          "users"
+        ],
+        "summary": "Forget password",
+        "description": "Use this endpoint to send your email",
+        "operationId": "forgetPassword",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "You can provide your email here",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "email": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string",
+                  "example": "Token sent to email!"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found"
+          }
+        }
+      }
+    },
+    "/users/resetPassword/{token}": {
+      "patch": {
+        "tags": [
+          "users"
+        ],
+        "summary": "Reset password",
+        "description": "Use this endpoint to reset your password",
+        "operationId": "resetPassword",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "token",
+            "in": "path",
+            "description": "You can provide your token here",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "description": "You can provide your new password AND password confirm here",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "password": {
+                  "type": "string"
+                },
+                "passswordConfirm": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          },
+          "404": {
+            "description": "Bad request"
+          }
+        }
+      }
+    },
+    "/users": {
+      "get": {
+        "tags": [
+          "users"
+        ],
+        "summary": "Get All Users",
+        "description": "Use this endpoint to get all users",
+        "operationId": "getAllUsers",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/User"
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
+      }
+    },
+    "/users/{id}": {
+      "get": {
+        "tags": [
+          "users"
+        ],
+        "summary": "Get User",
+        "description": "Use this endpoint to get user",
+        "operationId": "getUser",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "This is the unique identifier of user",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not found"
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
+      },
+      "patch": {
+        "tags": [
+          "users"
+        ],
+        "summary": "Update User",
+        "description": "Use this endpoint to update user",
+        "operationId": "updaeUser",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "This is the unique identifier of user",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "description": "This is the document that will be updated",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not found"
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "users"
+        ],
+        "summary": "Delete User",
+        "description": "Use this endpoint to delete user",
+        "operationId": "deleteUser",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "This is the unique identifier of user",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No content"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not found"
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
+      }
+    }
+  },
+  "securityDefinitions": {
+    "Bearer": {
+      "type": "apiKey",
+      "name": "Authorization",
+      "in": "header"
+    }
+  },
+  "definitions": {
+    "User": {
+      "type": "object",
+      "properties": {
+        "role": {
+          "type": "string"
+        },
+        "id": {
+          "type": "integer"
+        },
+        "name": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "photo": {
+          "type": "string"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    }
+  },
+  "externalDocs": {
+    "description": "Find out more about Swagger",
+    "url": "http://swagger.io"
+  }
+}

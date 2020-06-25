@@ -1,0 +1,21 @@
+extends base
+
+block content
+  .form
+    h2.heading-secondary.ma-bt-lg Log into your account
+    form.form.form--login
+      .form__group
+        a.btn__form--social.google-btn(href="/auth/google") Continue with Google
+        a.btn__form--social.facebook-btn(href="/auth/facebook") Continue with Facebook
+        a.btn__form--social.github-btn(href="/auth/github") Continue with Github
+      .form__group  
+        label.form__label(for='email') Email address or mobile number
+        input#emailOrPhone.form__input(type='text', placeholder='Email address or mobile number', required)
+        small#small Mobile format: 123-455-6784
+      .form__group.ma-bt-md
+        label.form__label(for='password') Password
+        input#password.form__input(type='password', placeholder='••••••••', required, minlength='8')
+      .form__group
+        button#login.btn__form--local.btn--green Login
+  #container
+    a#forgotPassword(href='/forgotPassword') Forgotten password?      
