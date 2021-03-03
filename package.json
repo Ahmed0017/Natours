@@ -44,7 +44,7 @@
     "passport-github": "^1.1.0",
     "passport-google-oauth20": "^2.0.0",
     "password-generator": "^2.3.2",
-    "pug": "^2.0.4",
+    "pug": "^3.0.1",
     "sharp": "^0.25.3",
     "slugify": "^1.4.0",
     "stripe": "^8.55.0",
