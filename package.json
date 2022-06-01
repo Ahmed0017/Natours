@@ -45,7 +45,7 @@
     "passport-google-oauth20": "^2.0.0",
     "password-generator": "^2.3.2",
     "pug": "^2.0.4",
-    "sharp": "^0.25.3",
+    "sharp": "^0.30.5",
     "slugify": "^1.4.0",
     "stripe": "^8.55.0",
     "swagger-ui-express": "^4.1.4",
